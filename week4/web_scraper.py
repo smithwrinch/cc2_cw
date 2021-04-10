@@ -6,13 +6,13 @@ from urllib.error import HTTPError
 from gensim.summarization import summarize
 
 
+
 ignored_links = [
 "/wiki/Clipping_(morphology)",
 "/wiki/Greek_language",
 "/wiki/Latin",
 "/wiki/Ancient_Greek_language",
 "/wiki/Literal_translation"
-
 ]
 
 
@@ -37,15 +37,17 @@ def visitPage(url):
 
 
 # gets first link from wiki page
-def getFirstLink(html, count, visited):
+def getFirstLink(html, count, visited, text=""):
 
     soup = BeautifulSoup(html, features="lxml")
-    # paras = soup.find_all('p')[0:5] # get first 5 to ensure link is caught
+    paras = soup.find_all('p')[0:5] # get first 5 to ensure link is caught
 
+    for t in paras:
+        text += t.getText()
     selection = soup.select('p a[href]')
     if(len(selection) == 0):
         # There was a dead end
-        return -2
+        return -2, ""
     first_link = ""
     for s in selection:
         first_link = s.get('href')
@@ -54,15 +56,15 @@ def getFirstLink(html, count, visited):
             break
     if(not first_link.count('/') == 2):
         # dead end - no links lead to wiki page
-        return -2
+        return -2, ""
     print(first_link)
     print("count: " + str(count))
     if(first_link == "/wiki/Philosophy"):
-        return count
+        return count, text
     elif (first_link in visited):
         # There is a cycle
-        return -1
-    return getFirstLink(visitPage('https://en.wikipedia.org' + first_link), count+1, visited + [first_link])
+        return -1,""
+    return getFirstLink(visitPage('https://en.wikipedia.org' + first_link), count+1, visited + [first_link], text)
     # return 'https://en.wikipedia.org' + first_link.get('href')
 
 
@@ -75,7 +77,7 @@ if __name__ == "__main__":
     print("\n\nFinding how many links to philosphy for " + topic)
     print("\n\n")
 
-    cnt = getFirstLink(start_html, 0, [""])
+    cnt, text = getFirstLink(start_html, 1, [""])
     if(cnt == -1):
         print("Unfortunatley there was a cycle!")
     elif (cnt == -2):
@@ -83,3 +85,4 @@ if __name__ == "__main__":
     else:
         print("Finished!")
         print(topic + " has " + str(cnt) + " links to philosphy!")
+        print (summarize(text,word_count=25*cnt))
