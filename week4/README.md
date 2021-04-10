@@ -3,7 +3,6 @@
 
 ## EXERCISE
 In class we were instructed to create a simple python web scraper using BeautifulSoup. I found out that by pressing the first non italicized non parenthized link on each wikipedia page you would get to wiki/Philosophy - or you would reach a cycle (repeated links) or dead end (no links). To showcase this I created a simple scraper that works out the "Philsophy number" of an inputted wiki page - that is the amount of links it takes to get to philosphy. The software includes support for cycles as well as dead ends. Below are some examples of the execution:
-\
 
 ![alt text](img/p1.png)
 ![alt text](img/p2.png)
@@ -41,3 +40,7 @@ Adjusted the field generation.
 ![alt text](img/8.png)
 ![alt text](img/9.png)
 ![alt text](img/10.png)
+
+### Video
+To see a video of this progress, please click [here](https://youtu.be/sq7wbopaGDY) or on the thumbnail below.
+[![IMAGE ALT TEXT](http://img.youtube.com/vi/sq7wbopaGDY/0.jpg)](http://www.youtube.com/watch?v=sq7wbopaGDY "Vector Fields")
