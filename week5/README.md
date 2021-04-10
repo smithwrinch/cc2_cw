@@ -82,5 +82,5 @@ I also decided to use numpy to alter an image. I wanted to turn an image into a 
 ![alt](img/parrotsMosiac10.png)
 #### Mosaic of 5px square sections
 ![alt](img/parrotsMosiac5.png)
-#### Mosaic of 10px width 25 px height sections
+#### Mosaic of 50px width 25 px height sections
 ![alt](img/parrotsMosiac1025.png)

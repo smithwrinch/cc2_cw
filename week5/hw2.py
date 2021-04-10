@@ -5,7 +5,7 @@ import cv2
 img = cv2.imread('img/parrots.jpg')
 img = cv2.cvtColor(img,cv2.COLOR_BGR2RGB)
 
-square_width = 10
+square_width = 50
 square_height = 25
 
 width = img.shape[1]
@@ -73,7 +73,7 @@ for x in range(tiles_x):
 
         for xx in range(square_width):
             for yy in range(square_height):
-                if(xx < yy):
+                if(square_height*xx < square_width*yy):
                     img[y*square_height + yy][x*square_width + xx] = img2[y*square_height + yy][x*square_width + xx]
                 else:
                     img[y*square_height + yy][x*square_width + xx] = img3[y*square_height + yy][x*square_width + xx]
