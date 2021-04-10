@@ -69,18 +69,18 @@ For the homework I used a simple circle approximation generator and then randoml
 I also decided to use numpy to alter an image. I wanted to turn an image into a mosaic of triangles. To do this I split the input image up into rectangles/squares and calculated the mean colour, and the mode r, g, and b. I then set the sections to the mean colour aboce the diagnonal, and the mode colour below the diagonal.
 \
 #### Input image
-![alt](img/parrots.png)
+![alt](img/parrots.jpg)
 #### Mean of 50px square sections
 ![alt](img/parrotsMean50.png)
 #### Mode of 50px square sections
 ![alt](img/parrotsMode50.png)
 #### Mosaic of 50px square sections
-![alt](img/parrotsMosaic50.png)
+![alt](img/parrotsMosiac50.png)
 #### Mosaic of 25px square sections
-![alt](img/parrotsMosaic25.png)
+![alt](img/parrotsMosiac25.png)
 #### Mosaic of 10px square sections
-![alt](img/parrotsMosaic10.png)
+![alt](img/parrotsMosiac10.png)
 #### Mosaic of 5px square sections
-![alt](img/parrotsMosaic5.png)
+![alt](img/parrotsMosiac5.png)
 #### Mosaic of 10px width 25 px height sections
-![alt](img/parrotsMosaic1025.png)
+![alt](img/parrotsMosiac1025.png)
