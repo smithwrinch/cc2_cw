@@ -110,13 +110,12 @@ Following the other notebok in the repo, I was able to train and design a neural
 \
 \
 I decided to add an extra layer to make it a deep neural network. Additionally I trained at a learning rate of 0.001 as opposed to 0.01. This fitted the figure a little better but you could argue it was overfitting as an extra layer for this is a bit overkill. You can see the process for 3000 iterations below as well as the losses/costs over 5000 iterations.
-![](img/hw/gif.gif)
+![](img/losses.gif)
 ![](img/losses.png)
 ### Image inpainting
 Having learned of image inpainting, I applied the technique to an image of my face. A gif of many, many iterations can be seen below.
+
 ![](img/hw/me.gif)
-![](img/losses.png)
-\
 \
 \
 *Note: All the code can mostly be found in the custom python files, with the exception of the GAN which is in the notebook*
