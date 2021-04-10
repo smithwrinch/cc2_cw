@@ -28,9 +28,7 @@ The process in the scientific method involves making conjectures (hypotheses), d
 Empirical evidence is the information received by means of the senses, particularly by observation and documentation of patterns and behavior through experimentation.[1] The term comes from the Greek word for experience, ἐμπειρία (empeiría).
 ```
 \
-\
 I think in the future it would be cool to illustrate the output in a clear way - like a network. Also, this can be optimised using memoisaiton; saving pages it has already reached and returning their saved philosphy number plus the current one.
-\
 
 
 ## HOMEWORK: Learning OpenFrameworks: Realtime Perlin Noise Vector Fields
