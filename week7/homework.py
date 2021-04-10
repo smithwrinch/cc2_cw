@@ -45,15 +45,18 @@ def set_up():
     # We're going to multiply our input by 10 values, creating an "inner layer"
     # of n_neurons neurons.
     n_neurons = 10
-    W = tf.Variable(tf.random_normal([1, n_neurons]), name='W')
+    # W = tf.Variable(tf.random_normal([1, n_neurons]), name='W')
+    # #
+    # # # and allow for n_neurons additions on each of those neurons
+    # b = tf.Variable(tf.constant(0, dtype=tf.float32, shape=[n_neurons]), name='b')
+    #
+    # # Instead of just multiplying, we'll put our n_neuron multiplications through a non-linearity, the tanh function.
+    # h = tf.nn.tanh(tf.matmul(tf.expand_dims(X, 1), W) + b, name='h')
 
-    # and allow for n_neurons additions on each of those neurons
-    b = tf.Variable(tf.constant(0, dtype=tf.float32, shape=[n_neurons]), name='b')
+    h = linear(tf.expand_dims(X, 1), 1, 10, scope='layer1', activation=tf.nn.tanh)
+    h2 = linear(h, 10, 3, scope='layer2', activation=tf.nn.tanh)
 
-    # Instead of just multiplying, we'll put our n_neuron multiplications through a non-linearity, the tanh function.
-    h = tf.nn.tanh(tf.matmul(tf.expand_dims(X, 1), W) + b, name='h')
-
-    Y_pred = tf.reduce_sum(h, 1)
+    Y_pred = tf.reduce_sum(h2, 1)
 
     cost = tf.reduce_mean(distance(Y_pred, Y))
 
@@ -65,6 +68,8 @@ def train(n_iterations=100, batch_size=200, learning_rate=0.02):
 
     xs, ys = create_toy_data()
     X, Y, Y_pred, cost = set_up()
+
+    costs = []
 
     cost = tf.reduce_mean(distance(Y_pred, Y))
     optimizer = tf.train.GradientDescentOptimizer(learning_rate).minimize(cost)
@@ -89,13 +94,19 @@ def train(n_iterations=100, batch_size=200, learning_rate=0.02):
                 sess.run(optimizer, feed_dict={X: xs[idxs_i], Y: ys[idxs_i]})
 
             training_cost = sess.run(cost, feed_dict={X: xs, Y: ys})
-
-            if it_i % 10 == 0:
+            costs.append(training_cost)
+            if it_i % 100 == 0:
                 ys_pred = Y_pred.eval(feed_dict={X: xs}, session=sess)
-                ax.plot(xs, ys_pred, 'k', alpha=it_i / n_iterations)
+                ax.plot(xs, ys_pred, 'k')
+                ax.scatter(xs, ys, alpha=0.15, marker='+')
                 print(training_cost)
+                plt.savefig(str(it_i)+'.png')
+                ax.clear();
+
     fig.show()
     plt.draw()
+    plt.plot(costs)
+    plt.savefig('losses.png')
     plt.show()
 
 def simpleY():
@@ -175,4 +186,4 @@ def deep_neural():
     # See the names of any operations in the graph
     [op.name for op in tf.get_default_graph().get_operations()]
 
-train()
+train(5000, learning_rate=0.001)

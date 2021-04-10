@@ -58,7 +58,7 @@ I found it both fun and unnerving to watch the network try and find the closest 
 ![](img/gan_t.png)
 \
 \
-I decided to try it on my own face. First with 200 iterations, then 1000 and then 1000 with a different starting vector.
+I decided to try it on my own face. First with 200 iterations, then 1000 and then 1000 with a different starting vector and lower learning rate.
 
 #### Start Image 2 (from dataset)
 ![](img/m11.png)
@@ -87,7 +87,7 @@ I decided to try it on my own face. First with 200 iterations, then 1000 and the
 \
 \
 \
-Clearly my face does not fit the data that the network was trained on well. I think my webcam and the lighting in my room makes the colours of the image too muted. I also noticed that 1000 iterations didn't make that much of a difference as the loss tended to plateu after 250 iterations. This can be seen for the two graphs of 100 iterations below.
+Clearly my face does not fit the data that the network was trained on well. I think my webcam and the lighting in my room makes the colours of the image too muted. I also noticed that 1000 iterations didn't make that much of a difference as the loss tended to plateu after 250 iterations. This can be seen for the two graphs of 1000 iterations below.
 \
 \
 ![](img/1000_iter.png)
@@ -95,7 +95,7 @@ Clearly my face does not fit the data that the network was trained on well. I th
 ![](img/x.png)
 
 ## Brief introduction to tensorflow
-Following the other notebok in the repo, I was able to train and design a neural network in Tensorflow to fit a regression of a custom trigonetric function.
+Following the other notebok in the repo, I was able to train and design a neural network in Tensorflow to fit a regression of a custom trigonetric function. The function I chose was `cos(x)*sin(x)+tanh(x)`.
 
 #### A simple y= mx + b fit
 ![](img/hw/quad.png)
@@ -104,10 +104,19 @@ Following the other notebok in the repo, I was able to train and design a neural
 #### Fitting to a polynomial (order 5)
 ![](img/hw/quad5.png)
 
-#### Adding non-linear layers (tanh activations)
+#### Adding non-linearity to layer (tanh activations)
 ![](img/hw/tanh.png)
 
+\
+\
+I decided to add an extra layer to make it a deep neural network. Additionally I trained at a learning rate of 0.001 as opposed to 0.01. This fitted the figure a little better but you could argue it was overfitting as an extra layer for this is a bit overkill. You can see the process for 3000 iterations below as well as the losses/costs over 5000 iterations.
+![](img/hw/gif.gif)
+![](img/losses.png)
 ### Image inpainting
 Having learned of image inpainting, I applied the technique to an image of my face. A gif of many, many iterations can be seen below.
-
 ![](img/hw/me.gif)
+![](img/losses.png)
+\
+\
+\
+*Note: All the code can mostly be found in the custom python files, with the exception of the GAN which is in the notebook*
