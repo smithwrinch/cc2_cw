@@ -154,7 +154,7 @@ test = [tag['src'] for tag in tags]
 print(test[0])
 print(len(test))
 ```
-Since you could only scrape around 33 images before being met with a log in screen, I changed the hashtag subtly and incrememnted an index for saving the files.
+Since you could only scrape around 33 images before being met with a log in screen, I changed the hashtag subtly and incremented an index for saving the files.
 ```
 index = 67 # incremment by 33 each time
 

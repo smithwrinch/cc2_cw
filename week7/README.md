@@ -33,7 +33,6 @@ Interesting... This result clearly illustrated that there was a sacrifice of the
 
 ## GAN's (briefly)
 The next stage of the set work required me to look at Generative Adversarial Networks. I completed the notebook exercise and below are some pictures of this process.
-\
 
 #### Horror creation 1
 ![](img/gan_horror.png)
